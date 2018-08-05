@@ -1,0 +1,25 @@
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 0px 0px 0px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 0px 0px 0 rgba(0,0,0,.12);
+}
+.example-headers-align .mat-expansion-panel-header-title {
+  position: relative;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+
+}
+.my-badge{
+  padding: 4px 8px;
+  color: white;
+}
+.my-title{
+  position: relative;
+  bottom: -4px;
+  margin-left: 4px;
+}
+.project {
+  background-color: red;
+}
+.outcome{
+  background-color: #039be5;
+}

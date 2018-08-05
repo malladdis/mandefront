@@ -24,6 +24,9 @@ export class ProjectService {
   update(id: number, body: any) {
     return this.appservice.put(apiRoutes.project.update, id, body);
   }
+  show(id: number) {
+    return this.appservice.show(apiRoutes.project.show, id);
+  }
   addKebele(form) {
     const data = JSON.stringify({
       woreda_id: form.value.woreda,
@@ -85,10 +88,10 @@ export class ProjectService {
             this.addProjectImplementers(form, frequency['data']['project_id']).subscribe(implementer => {
               this.addProjectBeneficaries(form, implementer['data']['project_id']).subscribe(beneficary => {
                 form.resetForm();
-              })
-            })
-          })
-        })
+              });
+            });
+          });
+        });
     });
   }
   addProjectDetail(form, id) {
@@ -102,7 +105,7 @@ export class ProjectService {
       mng_2: form.value.manager2,
       starting_date: form.value.start,
       ending_date: form.value.end
-    })
+    });
     return this.appservice.post(apiRoutes.project_detail.store, projectDetail);
   }
   addProjectFrequencies(form, id) {

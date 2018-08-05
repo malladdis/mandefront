@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectService} from '../project.service';
 import {Project} from '../../../models/project';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -8,7 +9,7 @@ import {Project} from '../../../models/project';
 })
 export class ProjectComponent implements OnInit {
   projects: Array<Project> = [];
-  constructor(private projectservice: ProjectService) { }
+  constructor(private projectservice: ProjectService, private router: Router) { }
 
   ngOnInit() {
     this.projectservice.index().subscribe( data => {
@@ -54,5 +55,8 @@ export class ProjectComponent implements OnInit {
         console.log(data);
       });
     }
+  }
+  detail(id) {
+    this.router.navigate([`/auth/master-modules/project/detail/${id}/overview/${id}`]);
   }
 }

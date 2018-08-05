@@ -1,3 +1,12 @@
-<p>
-  detail-project works!
-</p>
+<div  fxLayout="row" fxLayout.xs="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+  <div fxFlexFill >
+    <mat-toolbar color="primary">
+      <h1 class="mat-headline center-align" *ngIf="pro">{{pro['name']}}</h1>
+      <span class="spacer"></span>
+      <button mat-button routerLink="{{overviewLink}}">Overview</button>
+      <button mat-button routerLink="{{activityLink}}">Activities</button>
+      <button mat-button routerLink="{{logframLink}}">Logframe</button>
+    </mat-toolbar>
+  </div>
+</div>
+<router-outlet></router-outlet>

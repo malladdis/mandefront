@@ -8,7 +8,7 @@ import {DetailProjectComponent} from './detail-project/detail-project.component'
 const projectRoutes: Routes = [
   {path: '', component: ProjectComponent},
   {path: 'add', component: AddProjectComponent},
-  {path: 'detail/:id', component: DetailProjectComponent},
+  {path: 'detail/:id', loadChildren: './detail-project/detail/detail.module#DetailModule'},
   {path: 'add-category', component: ProjectCategoryComponent}
 ];
 @NgModule({

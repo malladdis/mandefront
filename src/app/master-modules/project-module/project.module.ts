@@ -13,6 +13,7 @@ import {DetailProjectComponent} from './detail-project/detail-project.component'
 import {ProjectService} from './project.service';
 import { ClusterComponent } from './cluster/cluster.component';
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import {DetailModule} from './detail-project/detail/detail.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -27,15 +28,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       apiKey: 'AIzaSyC_n7J4QTEgv89AWttZDKYf7ALt41MLYrQ'
     }),
     PerfectScrollbarModule,
+    DetailModule
   ],
   declarations: [
     ProjectComponent,
     ProjectCategoryComponent,
     AddProjectComponent,
-    DetailProjectComponent,
     ClusterComponent
   ],
-  exports: [ProjectComponent,  AddProjectComponent,  ProjectCategoryComponent, DetailProjectComponent, ClusterComponent],
+  exports: [ProjectComponent,  AddProjectComponent,  ProjectCategoryComponent, ClusterComponent],
   providers: [
     {
       provide: MAT_CHIPS_DEFAULT_OPTIONS,

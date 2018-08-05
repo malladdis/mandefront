@@ -29,18 +29,16 @@
   align-self: center;
   top: 4em;
   position: relative;
+  cursor: pointer;
 }
 .mat-card{
   padding-bottom: 8px;
+  padding-top: 0px;
 }
 .board{
-  background-color: #5c6bc0;
+  background-color: #042f52 !important;
   height: 10em;
   text-align: center;
-}
-.board:hover{
-  background-color: #042f52;
-  cursor: pointer;
 }
 .title-black{
   display: block;

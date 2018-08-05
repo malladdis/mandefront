@@ -22,18 +22,43 @@
     </div>
     <div class="program-container">
       <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
-        <div fxFlex='25' *ngFor="let project of projects">
-          <mat-card>
-            <div class="mat-card-image board">
+        <ng-container  *ngFor="let project of projects">
+          <div fxFlex='25' *ngIf="project['featured']">
+            <mat-card>
+              <div  class="mat-card-image board">
                 <button mat-icon-button (click)="toggle(project)" class="rating-button rating-button-white" [ngClass]= "{'rating-button-gold': project.featured}">
-                    <mat-icon>grade</mat-icon>
-                  </button>
-              <p class="title">{{project.name}}</p>
-            </div>
-            <span class="title-black">South omo</span>
-            <span class="title-black">{{project.category.name}}</span>
-          </mat-card>
-        </div>
+                  <mat-icon>grade</mat-icon>
+                </button>
+                <p (click)="detail(project.id)" class="title">{{project.name}}</p>
+              </div>
+              <span class="title-black">{{project['details']['cluster']['name']}}</span>
+              <span class="title-black">{{project['category']['name']}}</span>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div fxFlexFill>
+      <mat-toolbar class="other-toolbar">
+        <h1 class="mat-headline center-align">All Projects</h1>
+      </mat-toolbar>
+    </div>
+    <div class="program-container">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+        <ng-container  *ngFor="let project of projects">
+          <div fxFlex='25' *ngIf="!project['featured']">
+            <mat-card>
+              <div  class="mat-card-image board">
+                <button mat-icon-button (click)="toggle(project)" class="rating-button rating-button-white" [ngClass]= "{'rating-button-gold': project.featured}">
+                  <mat-icon>grade</mat-icon>
+                </button>
+                <p (click)="detail(project.id)" class="title">{{project.name}}</p>
+              </div>
+              <span class="title-black">{{project['details']['cluster']['name']}}</span>
+              <span class="title-black">{{project['category']['name']}}</span>
+            </mat-card>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
