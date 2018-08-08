@@ -12,7 +12,10 @@ export class LogFrameComponent implements OnInit {
 
   project: any;
   step = 0;
-  icon = 'folder';
+  icon: string;
+  outputs: Array<Object>;
+  outcomeIndicators: Array<Object>;
+  outputIndicators: Array<Object>;
   constructor(private route: ActivatedRoute, private projectserivce: ProjectService) {
 
   }
@@ -23,22 +26,30 @@ export class LogFrameComponent implements OnInit {
         console.log(data['data']);
       });
     });
+    this.icon = 'folder_open';
   }
-  setIcon() {
+  getOutputs(id) {
+    this.projectserivce.getOutputsByOutcome(id).subscribe(data => {
+      this.outputs = data['data'];
+      this.projectserivce.getIndicatorsByOutcome(id).subscribe(response => {
+          this.outcomeIndicators = response['data'];
+          console.log(response);
+      });
+      console.log(data);
+    });
+  }
+  getIndicatorsByOutput(id) {
+    this.projectserivce.getIndicatorsByOutput(id).subscribe(data => {
+      this.outputIndicators = data['data'];
+      console.log(data);
+    });
+  }
+  toggleIcon() {
     if (this.icon === 'folder') {
-      this.icon = 'open-folder';
+      this.icon = 'folder_open';
+    } else {
+      this.icon = 'folder';
     }
-    this.icon  = 'folder';
-  }
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
+    console.log(this.icon);
   }
 }

@@ -94,6 +94,15 @@ export class ProjectService {
         });
     });
   }
+  getOutputsByOutcome(id) {
+    return this.appservice.show(apiRoutes.outcomes.outcome_outputs, id);
+  }
+  getIndicatorsByOutcome(id){
+    return this.appservice.show(apiRoutes.outcomeIndicator.show, id);
+  }
+  getIndicatorsByOutput(id){
+    return this.appservice.show(apiRoutes.output_indicator.show, id);
+  }
   addProjectDetail(form, id) {
     const projectDetail = JSON.stringify({
       project_id: id,
@@ -131,4 +140,10 @@ export class ProjectService {
   return this.appservice.post(apiRoutes.project_beneficiaries.store, beneficariesValue);
   }
 
+  getOutcomes(id) {
+   return this.appservice.show(apiRoutes.outcomes.show, id);
+  }
+  getOutputs(id) {
+    return this.appservice.show(apiRoutes.outputs.show, id);
+  }
 }

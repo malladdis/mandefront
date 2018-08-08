@@ -21,5 +21,6 @@ export class OverviewComponent implements OnInit {
         console.log(data['data']);
       });
     });
+    console.log('hee');
   }
 }

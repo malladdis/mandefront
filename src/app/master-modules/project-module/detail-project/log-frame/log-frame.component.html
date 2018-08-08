@@ -1,40 +1,18 @@
-<div class="container">
-  <div fxLayout="row" fxLayout.xs="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" style="padding-top: 0;" fxLayoutGap="5px">
-    <div fxFlexFill>
-      <mat-accordion class="example-headers-align" *ngIf="project">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon >{{icon}}</mat-icon>&nbsp;
-              <span class="my-badge project">Project</span>
-              <span class="my-title">{{project.name}}</span>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ng-container *ngFor="let outcome of project.outcomes">
-            <mat-expansion-panel *ngIf="outcome.child.length > 0">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon>{{icon}}</mat-icon>&nbsp;
-                  <span class="my-badge outcome">Outcome</span>
-                  <span class="my-title">{{outcome.name}}</span>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <ng-container *ngFor="let c of outcome.child">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <mat-icon>{{icon}}</mat-icon>&nbsp;
-                      <span class="my-badge outcome">Outcome</span>
-                      <span class="my-title">{{c.name}}</span>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                </mat-expansion-panel>
-              </ng-container>
-            </mat-expansion-panel>
-          </ng-container>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+<div fxLayout="row" fxLayout.xs="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+  <div fxFlexFill>
+    <mat-accordion class="example-headers-align" *ngIf="project">
+      <mat-expansion-panel [expanded]="step === 0" hideToggle>
+        <mat-expansion-panel-header (click)="toggleIcon()">
+          <mat-panel-title >
+            <mat-icon>{{icon}}</mat-icon>
+            <span class="my-badge project">Project</span>
+            <span class="my-title">{{project['name']}}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <app-outcome-tree *ngFor="let outcome of project.outcomes" [id]="outcome.id">{{outcome['name']}}</app-outcome-tree>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>
-

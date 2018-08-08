@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectService} from '../project.service';
 import {Project} from '../../../models/project';
 import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -9,14 +10,17 @@ import {Router} from '@angular/router';
 })
 export class ProjectComponent implements OnInit {
   projects: Array<Project> = [];
-  constructor(private projectservice: ProjectService, private router: Router) { }
+
+  constructor(private projectservice: ProjectService, private router: Router) {
+  }
 
   ngOnInit() {
-    this.projectservice.index().subscribe( data => {
-        this.projects = data['data'];
-        console.log(data);
+    this.projectservice.index().subscribe(data => {
+      this.projects = data['data'];
+      console.log(data);
     });
   }
+
   toggle(value) {
     if (value.featured) {
       value.featured = false;
@@ -37,7 +41,7 @@ export class ProjectComponent implements OnInit {
       });
       console.log(value);
     }
-    else{
+    else {
       value.featured = true;
       const data = JSON.stringify({
         id: value.id,
@@ -56,6 +60,7 @@ export class ProjectComponent implements OnInit {
       });
     }
   }
+
   detail(id) {
     this.router.navigate([`/auth/master-modules/project/detail/${id}/overview/${id}`]);
   }

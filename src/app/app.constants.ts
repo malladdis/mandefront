@@ -127,6 +127,37 @@ const projectDetailRoutes = {
   update: createUrl('/project_details'),
   destroy: createUrl('/project_details')
 };
+const outputRoutes = {
+  index: createUrl('/outputs'),
+  show: createUrl('/outputs'),
+  store: createUrl('/outputs'),
+  update: createUrl('/outputs'),
+  destroy: createUrl('/outputs')
+};
+const outputIndicatorRoutes = {
+  index: createUrl('/output_indicators'),
+  show: createUrl('/output_indicators'),
+  store: createUrl('/output_indicators'),
+  update: createUrl('/output_indicators'),
+  destroy: createUrl('/output_indicators')
+};
+const outcomeRoutes = {
+  index: createUrl('/outcomes'),
+  show: createUrl('/outcomes'),
+  store: createUrl('/outcomes'),
+  update: createUrl('/outcomes'),
+  destroy: createUrl('/outcomes'),
+  outcome_outputs: createUrl('/outcome_outputs')
+};
+const outcomeIndicatorsRoutes = {
+  index: createUrl('/outcome_indicators'),
+  show: createUrl('/outcome_indicators'),
+  store: createUrl('/outcome_indicators'),
+  update: createUrl('/outcome_indicators'),
+  destroy: createUrl('/outcome_indicators'),
+  outcome_outputs: createUrl('/outcome_outputs')
+};
+
 const userRoutes = {
   me: createAuthUrl('/me'),
   users: createAuthUrl('/users')
@@ -156,7 +187,11 @@ export const apiRoutes = {
   project_frequency: projectFrequenciesRoutes,
   project_implementers: projectImplementerRoutes,
   project_detail: projectDetailRoutes,
-  project_beneficiaries: projectBeneficiariesRoutes
+  project_beneficiaries: projectBeneficiariesRoutes,
+  outputs: outputRoutes,
+  output_indicator: outputIndicatorRoutes,
+  outcomes: outcomeRoutes,
+  outcomeIndicator: outcomeIndicatorsRoutes
 };
 
 
