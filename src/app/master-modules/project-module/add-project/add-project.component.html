@@ -8,8 +8,8 @@
         <p>
           <mat-form-field class="half-width" *ngIf="categories">
             <mat-select name="program" ngModel required placeholder="program">
-              <mat-optgroup  *ngFor="let category of categories" [label]="category.name">
-                <mat-option *ngFor="let program of category.programs" [value]="program.id">
+              <mat-optgroup  *ngFor="let category of categories" [label]="category['name']">
+                <mat-option *ngFor="let program of category['programs']" [value]="program.id">
                   {{program.name}}
                 </mat-option>
               </mat-optgroup>
@@ -17,7 +17,7 @@
           </mat-form-field>
           <mat-form-field class="half-width" *ngIf="project_categories[0]">
             <mat-select name="category" ngModel required placeholder="Project Category">
-              <mat-option *ngFor="let category of project_categories" [value]="category.id">{{category.name}}</mat-option>
+              <mat-option *ngFor="let category of project_categories" [value]="category['id']">{{category.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <button *ngIf="!project_categories[0]" mat-raised-button color="primary" class="program-button" routerLink="/auth/master-modules/project/add-category" fxFlexAlign="center end">
@@ -67,7 +67,7 @@
             <mat-select name="manager1" ngModel required placeholder="Project Manager">
               <mat-option *ngFor= "let user of users" [value]="user.id">
                 {{user.name}}
-                ( {{user.email}} ) 
+                ( {{user.email}} )
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -75,7 +75,7 @@
             <mat-select name="manager2" ngModel  placeholder="Project Manager">
               <mat-option *ngFor= "let user of users" [value]="user.id">
                 {{user.name}}
-                ( {{user.email}} ) 
+                ( {{user.email}} )
               </mat-option>
             </mat-select>
           </mat-form-field>

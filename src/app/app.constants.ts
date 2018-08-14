@@ -157,6 +157,13 @@ const outcomeIndicatorsRoutes = {
   destroy: createUrl('/outcome_indicators'),
   outcome_outputs: createUrl('/outcome_outputs')
 };
+const timePlansRoutes = {
+  index: createUrl('/time_plans'),
+  show: createUrl('/time_plans'),
+  store: createUrl('/time_plans'),
+  update: createUrl('/time_plans'),
+  destroy: createUrl('/time_plans'),
+};
 
 const userRoutes = {
   me: createAuthUrl('/me'),
@@ -191,7 +198,8 @@ export const apiRoutes = {
   outputs: outputRoutes,
   output_indicator: outputIndicatorRoutes,
   outcomes: outcomeRoutes,
-  outcomeIndicator: outcomeIndicatorsRoutes
+  outcomeIndicator: outcomeIndicatorsRoutes,
+  timeplans: timePlansRoutes
 };
 
 

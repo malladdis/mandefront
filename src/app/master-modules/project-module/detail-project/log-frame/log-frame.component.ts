@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../../project.service';
-import {MatExpansionPanelState} from '@angular/material';
+import {MatDialog, MatExpansionPanel, MatExpansionPanelState} from '@angular/material';
+import {OutcomeDialogComponent} from '../outcome-dialog/outcome-dialog.component';
 
 @Component({
   selector: 'app-log-frame',
@@ -13,43 +14,39 @@ export class LogFrameComponent implements OnInit {
   project: any;
   step = 0;
   icon: string;
-  outputs: Array<Object>;
-  outcomeIndicators: Array<Object>;
-  outputIndicators: Array<Object>;
-  constructor(private route: ActivatedRoute, private projectserivce: ProjectService) {
+  expand = true;
+  constructor(private route: ActivatedRoute,
+              private projectserivce: ProjectService,
+              private dialog: MatDialog) {
+    this.dialog.afterAllClosed.subscribe(v => {
+      this.init();
+    });
 
   }
   ngOnInit() {
+  this.init();
+  }
+  init() {
     this.route.params.subscribe(params => {
       this.projectserivce.show(+params['id']).subscribe(data => {
         this.project = data['data'];
         console.log(data['data']);
       });
     });
-    this.icon = 'folder_open';
+    this.icon = 'expand_more';
   }
-  getOutputs(id) {
-    this.projectserivce.getOutputsByOutcome(id).subscribe(data => {
-      this.outputs = data['data'];
-      this.projectserivce.getIndicatorsByOutcome(id).subscribe(response => {
-          this.outcomeIndicators = response['data'];
-          console.log(response);
-      });
-      console.log(data);
-    });
+  disable(panel: MatExpansionPanel, id) {
+    panel.toggle();
+    this.toggleIcon();
+    this.openOutcomeForm(id);
   }
-  getIndicatorsByOutput(id) {
-    this.projectserivce.getIndicatorsByOutput(id).subscribe(data => {
-      this.outputIndicators = data['data'];
-      console.log(data);
-    });
-  }
+
   toggleIcon() {
-    if (this.icon === 'folder') {
-      this.icon = 'folder_open';
-    } else {
-      this.icon = 'folder';
-    }
-    console.log(this.icon);
+    this.icon = this.icon === 'chevron_right' ? 'expand_more' : 'chevron_right';
+  }
+  openOutcomeForm(id) {
+    this.dialog.open(OutcomeDialogComponent,
+      {data: {'project_id': id, 'type': 'project', 'id': 0},
+        width: '500px', height: '400px', disableClose: true});
   }
 }

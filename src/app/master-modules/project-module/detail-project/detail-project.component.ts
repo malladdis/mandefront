@@ -2,6 +2,13 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../project.service';
 import {OverviewComponent} from './overview/overview.component';
+import {MatDialog} from '@angular/material';
+import {OutcomeDialogComponent} from './outcome-dialog/outcome-dialog.component';
+import {OutputDialogComponent} from './output-dialog/output-dialog.component';
+import {IndicatorDialogComponent} from './indicator-dialog/indicator-dialog.component';
+import {ActivityDialogComponent} from './activity-dialog/activity-dialog.component';
+import {InputDialogComponent} from './input-dialog/input-dialog.component';
+import {ChooserDialogComponent} from './chooser-dialog/chooser-dialog.component';
 
 @Component({
   selector: 'app-detail-project',
@@ -15,7 +22,9 @@ export class DetailProjectComponent implements OnInit {
   overviewLink: string;
   activityLink: string;
   logframLink: string;
-  constructor(private route: ActivatedRoute, private projectserivce: ProjectService) {
+  constructor(private route: ActivatedRoute,
+              private projectserivce: ProjectService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -31,4 +40,20 @@ export class DetailProjectComponent implements OnInit {
       });
     });
   }
+  openOutcomeForm() {
+    this.dialog.open(ChooserDialogComponent, {data: {'id': 1}, width: '500px', height: '450px', disableClose: false});
+  }
+  openOutputForm() {
+    this.dialog.open(OutputDialogComponent, {width: '500px', height: '450px', disableClose: false});
+  }
+  openIndicatorForm() {
+    this.dialog.open(IndicatorDialogComponent,{width: '500px', height: '450px', disableClose: false});
+  }
+  openActivityForm() {
+    this.dialog.open(ActivityDialogComponent,{width: '500px', height: '450px', disableClose: false});
+  }
+  openInputForm() {
+    this.dialog.open(InputDialogComponent,{width: '500px', height: '450px', disableClose: false});
+  }
 }
+

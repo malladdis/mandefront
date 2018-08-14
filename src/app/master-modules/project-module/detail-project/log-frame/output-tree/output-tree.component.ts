@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProjectService} from '../../../project.service';
+import {MatDialog, MatExpansionPanel} from '@angular/material';
+import {OutcomeDialogComponent} from '../../outcome-dialog/outcome-dialog.component';
+import {OutputDialogComponent} from '../../output-dialog/output-dialog.component';
 
 @Component({
   selector: 'app-output-tree',
@@ -9,11 +12,13 @@ import {ProjectService} from '../../../project.service';
 export class OutputTreeComponent implements OnInit {
   icon: string;
   @Input() id;
+  @Input() outcome_id;
   output: any;
-  constructor(private projectservice: ProjectService) { }
+  constructor(private projectservice: ProjectService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.icon = 'folder';
+    this.icon = 'chevron_right';
     this.getOutputs(this.id);
   }
   getOutputs(id) {
@@ -21,12 +26,17 @@ export class OutputTreeComponent implements OnInit {
       this.output = data['data'];
     });
   }
+  disable(panel: MatExpansionPanel) {
+    panel.toggle();
+    this.toggleIcon();
+    this.openOutputDialog();
+  }
   toggleIcon() {
-    if (this.icon === 'folder') {
-      this.icon = 'folder_open';
-    } else {
-      this.icon = 'folder';
-    }
-    console.log(this.icon);
+    this.icon = this.icon === 'chevron_right' ? 'expand_more' : 'chevron_right';
+  }
+  openOutputDialog() {
+    this.dialog.open(OutputDialogComponent,
+      {data: {'outcome_id': this.outcome_id, 'type': 'output', 'id': this.id},
+        minWidth: '500px', minHeight: '400px', disableClose: true});
   }
 }

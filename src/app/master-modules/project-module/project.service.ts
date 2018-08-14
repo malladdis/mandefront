@@ -146,4 +146,16 @@ export class ProjectService {
   getOutputs(id) {
     return this.appservice.show(apiRoutes.outputs.show, id);
   }
+  getTimePlans() {
+    return this.appservice.get(apiRoutes.timeplans.index);
+  }
+  addOutcome(form, type) {
+    const data = JSON.stringify({
+      project_id: type['project_id'],
+      name: form.value.name,
+      type_id: form.value.type,
+      parent_id: type['type'] === 'project' ? 0 : type['id']
+    });
+    return this.appservice.post(apiRoutes.outcomes.store, data);
+  }
 }

@@ -1,4 +1,4 @@
-<div  fxLayout="row" fxLayout.xs="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+<div  fxLayout="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" >
   <div fxFlexFill >
     <mat-toolbar color="primary">
       <h1 class="mat-headline center-align" *ngIf="pro">{{pro['name']}}</h1>
@@ -6,6 +6,16 @@
       <button mat-button routerLink="{{overviewLink}}">Overview</button>
       <button mat-button routerLink="{{activityLink}}">Activities</button>
       <button mat-button routerLink="{{logframLink}}">Logframe</button>
+    </mat-toolbar>
+  </div>
+  <div fxFlexFill >
+    <mat-toolbar>
+      <span class="spacer2"></span>
+      <button mat-button (click)="openOutcomeForm()"><mat-icon>add</mat-icon>Outcome</button>
+      <button mat-button (click)="openOutputForm()"><mat-icon>add</mat-icon>Output</button>
+      <button mat-button (click)="openIndicatorForm()"><mat-icon>add</mat-icon>Indicator</button>
+      <button mat-button (click)="openActivityForm()"><mat-icon>add</mat-icon>Activity</button>
+      <button mat-button (click)="openInputForm()"><mat-icon>add</mat-icon>Input</button>
     </mat-toolbar>
   </div>
 </div>

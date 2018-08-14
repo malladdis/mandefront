@@ -1,7 +1,9 @@
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
   box-shadow: 0 0px 0px 0px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 0px 0px 0 rgba(0,0,0,.12);
 }
-
+.mat-expansion-panel-header{
+  padding-right: 0px;
+}
 .outcome{
   background-color: #039be5;
 }
@@ -19,4 +21,8 @@
   bottom: -4px;
   margin-left: 4px;
   vertical-align: center;
+}
+::ng-deep .mat-expansion-panel-body {
+  padding-right: 0 !important;
+  margin: 0 !important;
 }

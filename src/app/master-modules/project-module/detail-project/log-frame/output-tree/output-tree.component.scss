@@ -17,3 +17,8 @@
 .output{
   background-color: #15980d;
 }
+
+::ng-deep .mat-expansion-panel-body {
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
