@@ -97,12 +97,12 @@
               <form #indicatorForm="ngForm" novalidate>
                 <p>
                   <mat-form-field class="full-width">
-                    <input type="text" matInput placeholder="Indicator title">
+                    <input type="text" matInput placeholder="Indicator title" required>
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field class="full-width">
-                    <mat-select placeholder="Type">
+                    <mat-select placeholder="Type" required>
                       <mat-option>Quantitative</mat-option>
                       <mat-option>Qualitative</mat-option>
                     </mat-select>
@@ -110,7 +110,7 @@
                 </p>
                 <p>
                   <mat-form-field class="half-width">
-                    <input type="text" matInput placeholder="Baseline Value">
+                    <input type="text" matInput placeholder="Baseline Value" required>
                   </mat-form-field>
                   <mat-form-field class="half-width">
                     <input name="start" ngModel matInput [matDatepicker]="starting" placeholder="Baseline Date" required>
@@ -120,7 +120,7 @@
                 </p>
                 <p>
                   <mat-form-field class="half-width">
-                    <input type="text" matInput placeholder="Target Value">
+                    <input type="text" matInput placeholder="Target Value" required>
                   </mat-form-field>
                   <mat-form-field class="half-width">
                     <input name="end" ngModel matInput [matDatepicker]="ending" placeholder="Target Date" required>
@@ -143,6 +143,38 @@
                 <p>
                   <mat-form-field class="full-width">
                     <input type="text" matInput placeholder="Primary Source Of Data" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  &nbsp;&nbsp;&nbsp;
+                  <mat-checkbox name="disaggregation" color="primary">Disaggregation</mat-checkbox>
+                </p>
+                <p>
+                  <mat-form-field class="half-width">
+                    <mat-select name="disgby" placeholder="disaggregate method">
+                      <mat-option>Gender</mat-option>
+                      <mat-option>Age</mat-option>
+                      <mat-option>Disable</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button type="button" mat-raised-button color="primary">
+                    <mat-icon>add</mat-icon>&nbsp;
+                    Disaggregation Method
+                  </button>
+                </p>
+                <p>
+                  &nbsp;&nbsp;&nbsp;
+                  <mat-checkbox name="totalauto" color="primary">Total Automaticaly Calculated</mat-checkbox>
+                </p>
+                <p>
+                  &nbsp;&nbsp;&nbsp;
+                  <mat-checkbox name="customformneeded" color="primary">Connect To Custom Form</mat-checkbox>
+                </p>
+                <p>
+                  <mat-form-field class="full-width">
+                    <mat-select name="customform" placeholder="custom forms">
+                      <mat-option>form 1</mat-option>
+                    </mat-select>
                   </mat-form-field>
                 </p>
                 <button mat-raised-button color="primary" type="submit" mat-button class="background-primary text-floral-white" [disabled]="indicatorForm.form.invalid">

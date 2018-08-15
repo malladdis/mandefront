@@ -1,3 +1,140 @@
-<p>
-  output-dialog works!
-</p>
+<div fxLayout="row">
+  <div fxFlexFill>
+    <mat-toolbar style="background-color: white;">
+      <span class="spacer"></span>
+      <button  mat-button mat-dialog-close class="close-button" style="float: right">
+        <mat-icon > close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-tab-group>
+      <mat-tab  [label]="'Output'">
+        <ng-template matTabContent>
+          <mat-toolbar class="program-header">
+            Add New Output
+          </mat-toolbar>
+          <form novalidate #outputForm="ngForm" (ngSubmit) = "submitOutput(outputForm)">
+            <p>
+              <mat-form-field class="full-width" *ngIf="timePlans">
+                <mat-select name="type" ngModel placeholder="select output type">
+                  <mat-option *ngFor="let plan of timePlans"  [value]="plan['id']">{{plan['name']}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field class="full-width">
+                <input type="text" name="name" ngModel matInput placeholder="output title" required>
+              </mat-form-field>
+            </p>
+            <button mat-raised-button color="primary" type="submit" mat-button class="background-primary text-floral-white" [disabled]="outputForm.form.invalid">
+              <mat-icon iconsmall>save</mat-icon>
+              Save
+            </button>
+          </form>
+        </ng-template>
+      </mat-tab>
+      <!-- end of outcome tab -->
+      <!-- start of output tab -->
+      <mat-tab  [label]="'Activity'">
+        <ng-template matTabContent>
+
+        </ng-template>
+      </mat-tab>
+      <!-- end of output tab -->
+      <!-- start of indicator tab -->
+      <mat-tab  [label]="'Indicator'">
+        <perfect-scrollbar>
+          <ng-template matTabContent>
+            <form #indicatorForm="ngForm" novalidate>
+              <p>
+                <mat-form-field class="full-width">
+                  <input type="text" matInput placeholder="Indicator title" required>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Type" required>
+                    <mat-option>Quantitative</mat-option>
+                    <mat-option>Qualitative</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="half-width">
+                  <input type="text" matInput placeholder="Baseline Value" required>
+                </mat-form-field>
+                <mat-form-field class="half-width">
+                  <input name="start" ngModel matInput [matDatepicker]="starting" placeholder="Baseline Date" required>
+                  <mat-datepicker-toggle matSuffix [for]="starting"></mat-datepicker-toggle>
+                  <mat-datepicker #starting></mat-datepicker>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="half-width">
+                  <input type="text" matInput placeholder="Target Value" required>
+                </mat-form-field>
+                <mat-form-field class="half-width">
+                  <input name="end" ngModel matInput [matDatepicker]="ending" placeholder="Target Date" required>
+                  <mat-datepicker-toggle matSuffix [for]="ending"></mat-datepicker-toggle>
+                  <mat-datepicker #ending></mat-datepicker>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="half-width">
+                  <mat-select placeholder="Measuring Unit" required>
+                    <mat-option>percentage</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="half-width">
+                  <mat-select placeholder="Frequency" required>
+                    <mat-option>yearly</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                  <input type="text" matInput placeholder="Primary Source Of Data" required>
+                </mat-form-field>
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;
+                <mat-checkbox name="disaggregation" color="primary">Disaggregation</mat-checkbox>
+              </p>
+              <p>
+                <mat-form-field class="half-width">
+                  <mat-select name="disgby" placeholder="disaggregate method">
+                    <mat-option>Gender</mat-option>
+                    <mat-option>Age</mat-option>
+                    <mat-option>Disable</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button type="button" mat-raised-button color="primary">
+                  <mat-icon>add</mat-icon>&nbsp;
+                  Disaggregation Method
+                </button>
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;
+                <mat-checkbox name="totalauto" color="primary">Total Automaticaly Calculated</mat-checkbox>
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;
+                <mat-checkbox name="customformneeded" color="primary">Connect To Custom Form</mat-checkbox>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                  <mat-select name="customform" placeholder="custom forms">
+                    <mat-option>form 1</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </p>
+              <button mat-raised-button color="primary" type="submit" mat-button class="background-primary text-floral-white" [disabled]="indicatorForm.form.invalid">
+                <mat-icon iconsmall>save</mat-icon>
+                Save
+              </button>
+            </form>
+          </ng-template>
+        </perfect-scrollbar>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

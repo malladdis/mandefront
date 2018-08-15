@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {ProjectService} from '../../project.service';
 
 @Component({
   selector: 'app-output-dialog',
@@ -7,10 +8,15 @@ import {MatDialogRef} from '@angular/material';
   styleUrls: ['./output-dialog.component.scss']
 })
 export class OutputDialogComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<OutputDialogComponent>) { }
+  timePlans: Array<Object>;
+  constructor(public dialogRef: MatDialogRef<OutputDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private projectservice: ProjectService) { }
 
   ngOnInit() {
+    this.projectservice.getTimePlans().subscribe(data => {
+      this.timePlans = data['data'];
+    });
   }
-
+  submitOutput(form) {}
 }

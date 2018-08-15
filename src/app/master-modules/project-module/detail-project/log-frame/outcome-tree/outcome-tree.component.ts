@@ -39,6 +39,6 @@ export class OutcomeTreeComponent implements OnInit {
   openOutcomeForm(id) {
     this.dialog.open(OutcomeDialogComponent,
       {data: {'project_id': this.project_id, 'type': 'outcome', 'id': id},
-        minWidth: '500px', minHeight: '400px', disableClose: true});
+        minWidth: '500px', minHeight: '400px', maxHeight: '600px' , disableClose: true});
   }
 }
