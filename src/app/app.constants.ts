@@ -164,7 +164,34 @@ const timePlansRoutes = {
   update: createUrl('/time_plans'),
   destroy: createUrl('/time_plans'),
 };
-
+const datatypes = {
+  index: createUrl('/data_types'),
+  show: createUrl('/data_types'),
+  store: createUrl('/data_types'),
+  update: createUrl('/data_types'),
+  destroy: createUrl('/data_types'),
+};
+const measuringUnit = {
+  index: createUrl('/measuring_units'),
+  show: createUrl('/measuring_units'),
+  store: createUrl('/measuring_units'),
+  update: createUrl('/measuring_units'),
+  destroy: createUrl('/measuring_units'),
+};
+const disaggregation_methods = {
+  index: createUrl('/disaggregation_methods'),
+  show: createUrl('/disaggregation_methods'),
+  store: createUrl('/disaggregation_methods'),
+  update: createUrl('/disaggregation_methods'),
+  destroy: createUrl('/disaggregation_methods'),
+};
+const indicators = {
+  index: createUrl('/indicators'),
+  show: createUrl('/indicators'),
+  store: createUrl('/indicators'),
+  update: createUrl('/indicators'),
+  destroy: createUrl('/indicators'),
+};
 const userRoutes = {
   me: createAuthUrl('/me'),
   users: createAuthUrl('/users')
@@ -199,7 +226,11 @@ export const apiRoutes = {
   output_indicator: outputIndicatorRoutes,
   outcomes: outcomeRoutes,
   outcomeIndicator: outcomeIndicatorsRoutes,
-  timeplans: timePlansRoutes
+  timeplans: timePlansRoutes,
+  datatypes: datatypes,
+  measuring_units: measuringUnit,
+  disaggregation_methods: disaggregation_methods,
+  indicators: indicators
 };
 
 

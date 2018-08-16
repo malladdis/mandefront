@@ -94,23 +94,22 @@
         <mat-tab  [label]="'Indicator'">
           <perfect-scrollbar>
             <ng-template matTabContent>
-              <form #indicatorForm="ngForm" novalidate>
+              <form #indicatorForm="ngForm" novalidate (ngSubmit)="submitIndicator(indicatorForm)">
                 <p>
                   <mat-form-field class="full-width">
-                    <input type="text" matInput placeholder="Indicator title" required>
+                    <input type="text" name="name" ngModel matInput placeholder="Indicator title" required>
                   </mat-form-field>
                 </p>
                 <p>
-                  <mat-form-field class="full-width">
-                    <mat-select placeholder="Type" required>
-                      <mat-option>Quantitative</mat-option>
-                      <mat-option>Qualitative</mat-option>
+                  <mat-form-field class="full-width" *ngIf="dataTypes">
+                    <mat-select name="type" ngModel placeholder="Type" required>
+                      <mat-option *ngFor="let type of dataTypes" [value]="type['id']">{{type['name']}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field class="half-width">
-                    <input type="text" matInput placeholder="Baseline Value" required>
+                    <input name="baseline" type="number" ngModel matInput placeholder="Baseline Value" required>
                   </mat-form-field>
                   <mat-form-field class="half-width">
                     <input name="start" ngModel matInput [matDatepicker]="starting" placeholder="Baseline Date" required>
@@ -120,7 +119,7 @@
                 </p>
                 <p>
                   <mat-form-field class="half-width">
-                    <input type="text" matInput placeholder="Target Value" required>
+                    <input name="target" type="number" ngModel matInput placeholder="Target Value" required>
                   </mat-form-field>
                   <mat-form-field class="half-width">
                     <input name="end" ngModel matInput [matDatepicker]="ending" placeholder="Target Date" required>
@@ -130,31 +129,29 @@
                 </p>
                 <p>
                   <mat-form-field class="half-width">
-                    <mat-select placeholder="Measuring Unit" required>
-                      <mat-option>percentage</mat-option>
+                    <mat-select name="unit" ngModel placeholder="Measuring Unit" required>
+                      <mat-option *ngFor="let unit of measuringUnits" [value]="unit['id']">{{unit['name']}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="half-width">
-                    <mat-select placeholder="Frequency" required>
-                      <mat-option>yearly</mat-option>
+                    <mat-select name="frequency" ngModel placeholder="Frequency" required>
+                      <mat-option *ngFor="let frequency of frequencies" [value]="frequency['id']">{{frequency['name']}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field class="full-width">
-                    <input type="text" matInput placeholder="Primary Source Of Data" required>
+                    <input name="source" ngModel type="text" matInput placeholder="Primary Source Of Data" required>
                   </mat-form-field>
                 </p>
                 <p>
                   &nbsp;&nbsp;&nbsp;
-                  <mat-checkbox name="disaggregation" color="primary">Disaggregation</mat-checkbox>
+                  <mat-checkbox name="disaggregation" ngModel [(ngModel)]="disaggregate" color="primary">Desegregate data by</mat-checkbox>
                 </p>
-                <p>
+                <p *ngIf="disaggregate">
                   <mat-form-field class="half-width">
-                    <mat-select name="disgby" placeholder="disaggregate method">
-                      <mat-option>Gender</mat-option>
-                      <mat-option>Age</mat-option>
-                      <mat-option>Disable</mat-option>
+                    <mat-select name="disgby" ngModel placeholder="disaggregate method">
+                      <mat-option *ngFor="let method of disaggregationMethods" [value]="method['id']">{{method['name']}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <button type="button" mat-raised-button color="primary">
@@ -164,15 +161,15 @@
                 </p>
                 <p>
                   &nbsp;&nbsp;&nbsp;
-                  <mat-checkbox name="totalauto" color="primary">Total Automaticaly Calculated</mat-checkbox>
+                  <mat-checkbox [checked]="true" name="totalauto" ngModel color="primary">Total Automatically Calculated</mat-checkbox>
                 </p>
                 <p>
                   &nbsp;&nbsp;&nbsp;
-                  <mat-checkbox name="customformneeded" color="primary">Connect To Custom Form</mat-checkbox>
+                  <mat-checkbox name="customformneeded" ngModel [(ngModel)] = "customform" color="primary">Connect To Custom Form</mat-checkbox>
                 </p>
-                <p>
+                <p *ngIf="customform">
                   <mat-form-field class="full-width">
-                    <mat-select name="customform" placeholder="custom forms">
+                    <mat-select name="customform" ngModel placeholder="custom forms">
                       <mat-option>form 1</mat-option>
                     </mat-select>
                   </mat-form-field>

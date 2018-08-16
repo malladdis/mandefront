@@ -149,6 +149,15 @@ export class ProjectService {
   getTimePlans() {
     return this.appservice.get(apiRoutes.timeplans.index);
   }
+  getDatatypes() {
+    return this.appservice.get(apiRoutes.datatypes.index);
+  }
+  getMeasuringUnits() {
+    return this.appservice.get(apiRoutes.measuring_units.index);
+  }
+  getDisaggregationMethods() {
+    return this.appservice.get(apiRoutes.disaggregation_methods.index);
+  }
   addOutcome(form, type) {
     const data = JSON.stringify({
       project_id: type['project_id'],
@@ -158,4 +167,18 @@ export class ProjectService {
     });
     return this.appservice.post(apiRoutes.outcomes.store, data);
   }
+  addIndicator(form) {
+    const data = JSON.stringify({
+      name: form.value.name,
+      type_id: form.value.type,
+      measuring_unit_id: form.value.unit,
+      frequency_id: form.value.frequency,
+      baseline_value: form.value.baseline,
+      source: form.value.source,
+      target_value: form.value.target,
+      is_total: form.value.totalauto
+    });
+    this.appservice.post(apiRoutes.indicators.index, data);
+  }
+  addIndicatorDisaggregation() {}
 }
