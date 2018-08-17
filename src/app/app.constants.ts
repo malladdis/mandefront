@@ -192,6 +192,54 @@ const indicators = {
   update: createUrl('/indicators'),
   destroy: createUrl('/indicators'),
 };
+const indicator_disaggregation_methods = {
+  index: createUrl('/indicator_disaggregation_methods'),
+  show: createUrl('/indicator_disaggregation_methods'),
+  store: createUrl('/indicator_disaggregation_methods'),
+  update: createUrl('/indicator_disaggregation_methods'),
+  destroy: createUrl('/indicator_disaggregation_methods'),
+};
+
+const activity_categories = {
+  index: createUrl('/activity_categories'),
+  show: createUrl('/activity_categories'),
+  store: createUrl('/activity_categories'),
+  update: createUrl('/activity_categories'),
+  destroy: createUrl('/activity_categories'),
+};
+const activities = {
+  index: createUrl('/activities'),
+  show: createUrl('/activities'),
+  store: createUrl('/activities'),
+  update: createUrl('/activities'),
+  destroy: createUrl('/activities'),
+};
+const activity_budgets = {
+  index: createUrl('/activity_budgets'),
+  show: createUrl('/activity_budgets'),
+  store: createUrl('/activity_budgets'),
+  update: createUrl('/activity_budgets'),
+  destroy: createUrl('/activity_budgets')
+};
+
+const activity_indicators = {
+  index: createUrl('/activity_indicators'),
+  show: createUrl('/activity_indicators'),
+  store: createUrl('/activity_indicators'),
+  update: createUrl('/activity_indicators'),
+  destroy: createUrl('/activity_indicators')
+};
+
+
+const status = {
+  index: createUrl('/statuses'),
+  show: createUrl('/statuses'),
+  store: createUrl('/statuses'),
+  update: createUrl('/statuses'),
+  destroy: createUrl('/statuses'),
+};
+
+
 const userRoutes = {
   me: createAuthUrl('/me'),
   users: createAuthUrl('/users')
@@ -230,7 +278,13 @@ export const apiRoutes = {
   datatypes: datatypes,
   measuring_units: measuringUnit,
   disaggregation_methods: disaggregation_methods,
-  indicators: indicators
+  indicators: indicators,
+  indicator_disaggregation_methods: indicator_disaggregation_methods,
+  activity_categories: activity_categories,
+  statuses: status,
+  activities: activities,
+  activity_budgets: activity_budgets,
+  activity_indicators: activity_indicators
 };
 
 

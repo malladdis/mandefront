@@ -15,6 +15,7 @@
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
       <app-indicator-tree *ngFor="let indicator of output['indicators']" [indicator]="indicator"></app-indicator-tree>
+      <app-activity-tree *ngFor="let activity of output['activities']" [id]="activity['id']" [output_id]="output['id']"></app-activity-tree>
       <app-output-tree *ngFor="let out of output['outputs']" [id]="out['id']"></app-output-tree>
     </ng-template>
   </mat-expansion-panel>

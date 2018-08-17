@@ -15,6 +15,7 @@ export class LogFrameComponent implements OnInit {
   step = 0;
   icon: string;
   expand = true;
+  formSubmited = false;
   constructor(private route: ActivatedRoute,
               private projectserivce: ProjectService,
               private dialog: MatDialog) {

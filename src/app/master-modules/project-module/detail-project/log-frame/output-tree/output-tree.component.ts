@@ -36,7 +36,7 @@ export class OutputTreeComponent implements OnInit {
   }
   openOutputDialog() {
     this.dialog.open(OutputDialogComponent,
-      {data: {'outcome_id': this.outcome_id, 'type': 'output', 'id': this.id},
+      {data: {'outcome_id': this.outcome_id, 'type': 'output', 'id': this.id, 'output_id': this.id },
         minWidth: '500px', minHeight: '400px', maxHeight: '600px', disableClose: true});
   }
 }

@@ -63,6 +63,12 @@ export class OutcomeDialogComponent implements OnInit {
       form.resetForm();
     });
   }
-  submitOutput(form) {}
-  submitIndicator(form) {console.log(form);}
+  submitOutput(form) {
+    this.projectservice.addOutput(form, this.data).subscribe(data => form.resetForm());
+    console.log(form);
+  }
+  submitIndicator(form) {
+    this.projectservice.addIndicator(form, this.data);
+    console.log(form);
+  }
 }

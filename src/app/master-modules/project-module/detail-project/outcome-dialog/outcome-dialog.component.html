@@ -150,7 +150,7 @@
                 </p>
                 <p *ngIf="disaggregate">
                   <mat-form-field class="half-width">
-                    <mat-select name="disgby" ngModel placeholder="disaggregate method">
+                    <mat-select name="disgby" ngModel placeholder="disaggregate method" [multiple]="true">
                       <mat-option *ngFor="let method of disaggregationMethods" [value]="method['id']">{{method['name']}}</mat-option>
                     </mat-select>
                   </mat-form-field>
