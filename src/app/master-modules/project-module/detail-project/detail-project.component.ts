@@ -22,9 +22,11 @@ export class DetailProjectComponent implements OnInit {
   overviewLink: string;
   activityLink: string;
   logframLink: string;
+  expenditureLink: string;
   constructor(private route: ActivatedRoute,
               private projectserivce: ProjectService,
               private dialog: MatDialog) {
+
   }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class DetailProjectComponent implements OnInit {
         this.overviewLink = `/auth/master-modules/project/detail/${data['data']['id']}/overview/${data['data']['id']}`;
         this.activityLink = `/auth/master-modules/project/detail/${data['data']['id']}/activities/${data['data']['id']}`;
         this.logframLink = `/auth/master-modules/project/detail/${data['data']['id']}/logframe/${data['data']['id']}`;
+        this.expenditureLink = `/auth/master-modules/project/detail/${data['data']['id']}/expenditure/${data['data']['id']}`;
       });
     });
   }
@@ -55,5 +58,6 @@ export class DetailProjectComponent implements OnInit {
   openInputForm() {
     this.dialog.open(InputDialogComponent,{width: '500px', height: '450px', disableClose: false});
   }
+
 }
 

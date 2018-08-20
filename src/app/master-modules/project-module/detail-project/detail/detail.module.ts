@@ -18,6 +18,7 @@ import {InputDialogComponent} from '../input-dialog/input-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChooserDialogComponent} from '../chooser-dialog/chooser-dialog.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {ExpenditureComponent} from '../expenditure/expenditure.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -31,7 +32,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   declarations: [DetailProjectComponent, OverviewComponent,
     ActivityComponent, LogFrameComponent, OutcomeTreeComponent,
-    IndicatorTreeComponent, ActivityTreeComponent, OutputTreeComponent,
+    IndicatorTreeComponent, ActivityTreeComponent, OutputTreeComponent, ExpenditureComponent,
   ActivityDialogComponent, IndicatorDialogComponent, OutcomeDialogComponent,
     OutputDialogComponent, InputDialogComponent, ChooserDialogComponent],
   exports: [DetailProjectComponent, OverviewComponent,
